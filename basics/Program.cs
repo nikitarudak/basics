@@ -36,6 +36,20 @@ namespace OOP_basics
             }
             return array;
         }
+        static public int[,] korr = new int[10, 10];
+        public void table()
+        {
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    //Console.Write("{0,4}", i * j);
+                    korr[i, j] = (i + 1)*(j+1);
+                    Console.Write("{0,4}",korr[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
 
         static void Main(string[] args)
         {
