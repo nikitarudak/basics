@@ -6,159 +6,66 @@ using System.Threading.Tasks;
 
 namespace OOP_basics
 {
-    class Cycle
+    class Program
     {
-        static int ArraySize(int min, int max)
-        {
-            Random rnd = new Random();
-            int A = rnd.Next(min, max);
-            return A;
-        }
-
-        public static int[] ArrayCreate(int A)//A это размер масива
-        {
-            int[] array = new int[A];
-            int arv;
-            for (int i = 0; i < A; i++)
-            {
-                try
-                {
-                    Console.WriteLine("Введите число:");
-                    arv = int.Parse(Console.ReadLine());
-                    array[i] = arv;
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Подумай лучше");
-                }
-                //array[i] = int.Parse(Console.ReadLine());
-                //Console.Write("{0,3}",array[i]);
-            }
-            return array;
-        }
-        static public int[,] korr = new int[10, 10];
-        public void table()
-        {
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    //Console.Write("{0,4}", i * j);
-                    korr[i, j] = (i + 1)*(j+1);
-                    Console.Write("{0,4}",korr[i, j]);
-                }
-                Console.WriteLine();
-            }
-        }
-
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            //----------------
-            //int size = ArraySize(1, 20);
-            Console.WriteLine("Напишите размер массива:");
-            int size = int.Parse(Console.ReadLine());
-            int[] arr = new int[size];
-            arr = ArrayCreate(size);
-            int addition = 0;
-            int product = 1;
-            foreach (var item in arr)
-            {
-                Console.Write("{0,3}", item);
-                addition += item;
-                product *= item;
-            }
-            double average = addition / size;
-            Console.WriteLine();
-            Console.WriteLine("Сложение: {0}, умножение: {1}, среднее: {2}", addition, product, average);
+            Console.WriteLine(Subprogram.Multiplication(4, 5));
 
+
+            float rand = Cycle.ArraySize(1, 50);
+            float rand2 = Cycle.ArraySize(1, 50);
+            Console.WriteLine(Subprogram.Average(rand, rand2));
+
+            Console.WriteLine("Введите первый символ:");
+            float a = float.Parse(Console.ReadLine());
+            Console.WriteLine("Введите знак действия:");
+            char oper = char.Parse(Console.ReadLine());
+            Console.WriteLine("Введите второй символ:");
+            float b = float.Parse(Console.ReadLine());
+
+            Subprogram.CalcMur(a, b, oper);
             Console.WriteLine();
-            //----------------
-            Console.WriteLine("Купи слона!");
-            while (true)
+
+            Console.WriteLine("This is Google Chrome!!1");
+            Console.WriteLine("Как тебя зовут?");
+            string name = Console.ReadLine();
+            Console.WriteLine("Привет, " + name.ToUpper());
+            if (name.ToLower() == "juku")
             {
-                Console.WriteLine("Напишите ответ:");
-                string answer = Console.ReadLine();
-                if (answer.ToLower() == "slon")
+                Console.WriteLine("Пойдём в кино, {0}? Сколько тебе лет?", name);
+                int age = int.Parse(Console.ReadLine());
+                double price = 6.50;
+                string ticket;
+                if (age < 0 || age > 120)
                 {
-                    Console.WriteLine("С вас 1000 евро");
-                    break;
+                    Console.WriteLine("Ошибка!");
                 }
                 else
                 {
-                    Console.WriteLine("Все так говорят, а вы возьмите и купите слона");
-                }
-            }
-            //----------------
-            Random rnd = new Random();
-            int x = rnd.Next(100);
-            int count = 1;
-            Console.WriteLine("Попробуйте угадать число от 0 до 100 за 5 попыток.");
-            while (count <= 5)
-            {
-                int k = int.Parse(Console.ReadLine());
-                if (x == k)
-                {
-                    Console.WriteLine("Да! Компьютер загадал число " + k + "!");
-                    break;
-                }
-                else
-                {
-                    count++;
-                    if (count == 6)
+                    if (age <= 6)
                     {
-                        Console.WriteLine("Увы, вы не отгодали загаданное число. Это было число " + x + "!");
-                        break;
+                        ticket = ("Большая скидка!");
+                        price *= 0.5;
                     }
-                    if (k < x)
+                    else
                     {
-                        Console.WriteLine("Загаданное число больше.");
+                        ticket = ("Обычный билет");
                     }
-                    else if (k > x)
-                    {
-                        Console.WriteLine("Загаданное число меньше.");
-                    }
-
+                    Console.WriteLine("{0}\nСтоимость билета: {1}", ticket, price);
                 }
             }
-            //----------------
-            string[] abc = new string[5] { "A", "B", "C", "D", "E" };
-            int ind = ArraySize(0, 4);
-            Console.WriteLine("Индекс: {1}, буква: {0}", abc[ind], ind);
-            int j = 0;
-            while (j != abc.Length)
+            else
             {
-                Console.WriteLine(abc[j]);
-                j++;
+                Console.WriteLine("Я занят.");
             }
-            //----------------
-            int[] arr2 = new int[4];
-            arr2 = ArrayCreate(4);
-            Console.WriteLine("Максимальное число {0}", arr2.Max());
-            //----------------
-            int A = ArraySize(3, 12); //ряды
-            int E = ArraySize(3, 12); //столбцы
-            int[,] table = new int[A, E];
-            //int[,] table2 = new int[,] { };
-            for (int i = 0; i < A; i++)
-            {
-                for (j = 0; j < E; j++)
-                {
-                    table[i, j] = ArraySize(-10, 10);
-                }
-            }
-            for (int i = 0; i < A; i++)
-            {
-                for (j = 0; j < E; j++)
-                {
-                    Console.Write(table[i, j]);
-                }
-                Console.WriteLine();
-            }
-
 
 
             Console.ReadLine();
+            /*int number1 = int.Parse(Console.ReadLine());
+            int number2 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Произведение чисел {1} и {0} равно {2}", number1, number2, number1 * number2);*/
         }
     }
 }
